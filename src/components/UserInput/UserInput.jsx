@@ -2,37 +2,37 @@ export default function UserInput({ investmentData, changeInvestment }) {
   return (
     <div id="user-input">
       <div className="input-group">
-        <label htmlFor="initial">
+        <label htmlFor="initialInvestment">
           Initial Investment
           <input
             type="number"
-            id="initial"
+            id="initialInvestment"
             min="0"
-            defaultValue={investmentData.initial || ''}
+            defaultValue={investmentData.initialInvestment || ''}
             onChange={changeInvestment}
           />
         </label>
 
-        <label htmlFor="annuall">
+        <label htmlFor="annualInvestment">
           Annuall Investment
           <input
             type="number"
-            id="annuall"
+            id="annualInvestment"
             min="0"
-            defaultValue={investmentData.annuall || ''}
+            defaultValue={investmentData.annualInvestment || ''}
             onChange={changeInvestment}
           />
         </label>
       </div>
 
       <div className="input-group">
-        <label htmlFor="return">
+        <label htmlFor="expectedReturn">
           Expected Return
           <input
             type="number"
-            id="return"
+            id="expectedReturn"
             min="0"
-            defaultValue={investmentData.return || ''}
+            defaultValue={investmentData.expectedReturn || ''}
             onChange={changeInvestment}
           />
         </label>

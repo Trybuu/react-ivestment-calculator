@@ -1,25 +1,31 @@
 import { useState } from 'react'
 
+import { calculateInvestmentResults } from './util/investment'
+
 import Header from './components/Header/Header'
 import Result from './components/Result/Result'
 import UserInput from './components/UserInput/UserInput'
 
 export default function App() {
   const [investment, setInvestment] = useState({
-    initial: null,
-    annuall: null,
-    return: null,
-    duration: null,
+    initialInvestment: 10000,
+    annualInvestment: 1200,
+    expectedReturn: 6,
+    duration: 10,
   })
 
+  // Prepared data to render table at start
+  let investmentResult = calculateInvestmentResults(investment)
+
   function handleChangeInvestment(e) {
-    console.log(investment)
-    console.log(e.target.id)
-    console.log(e.target.value)
     setInvestment((currInvestment) => {
-      const newInvestment = { ...currInvestment, [e.target.id]: e.target.value }
+      const newInvestment = {
+        ...currInvestment,
+        [e.target.id]: Number(e.target.value),
+      }
       return newInvestment
     })
+    investmentResult = calculateInvestmentResults(investment)
   }
 
   return (
@@ -29,7 +35,7 @@ export default function App() {
         investmentData={investment}
         changeInvestment={handleChangeInvestment}
       />
-      <Result />
+      <Result investmentResult={investmentResult} />
     </>
   )
 }
