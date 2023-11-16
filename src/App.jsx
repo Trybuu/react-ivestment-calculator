@@ -19,11 +19,10 @@ export default function App() {
 
   function handleChangeInvestment(e) {
     setInvestment((currInvestment) => {
-      const newInvestment = {
+      return {
         ...currInvestment,
         [e.target.id]: Number(e.target.value),
       }
-      return newInvestment
     })
     investmentResult = calculateInvestmentResults(investment)
   }
